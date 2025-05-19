@@ -23,15 +23,24 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "test-api-key",
-  authDomain: `${import.meta.env.VITE_FIREBASE_PROJECT_ID || "test-project"}.firebaseapp.com`,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "test-project",
-  storageBucket: `${import.meta.env.VITE_FIREBASE_PROJECT_ID || "test-project"}.appspot.com`,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "test-app-id"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebaseapp.com`,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.appspot.com`,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: "G-measurement-id"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+let app;
+try {
+  app = initializeApp(firebaseConfig);
+} catch (error) {
+  // If already initialized, use the existing app
+  console.log("Using existing Firebase app instance");
+  app = initializeApp(firebaseConfig, "tripPlannerApp");
+}
+
 const auth = getAuth(app);
 const db = getFirestore(app);
 
