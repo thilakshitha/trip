@@ -27,7 +27,9 @@ const firebaseConfig = {
   authDomain: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebaseapp.com`,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.appspot.com`,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
+  messagingSenderId: "123456789012", // This is a placeholder and will be overridden by Firebase
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  databaseURL: `https://${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebaseio.com`
 };
 
 // Initialize Firebase
