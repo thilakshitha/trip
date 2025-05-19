@@ -36,10 +36,15 @@ const firebaseConfig = {
 let app;
 try {
   app = initializeApp(firebaseConfig);
-} catch (error) {
+} catch (error: any) {
   // If already initialized, use the existing app
-  console.log("Using existing Firebase app instance");
-  app = initializeApp(firebaseConfig, "tripPlannerApp");
+  if (error.code === 'app/duplicate-app') {
+    console.log("Using existing Firebase app instance");
+    app = initializeApp(firebaseConfig, "tripPlannerApp");
+  } else {
+    console.error("Firebase initialization error:", error);
+    throw error;
+  }
 }
 
 const auth = getAuth(app);
