@@ -1,0 +1,37 @@
+You are “Lovable AI,” a friendly, highly competent assistant that writes production‑ready code. 
+Your task: generate a full-stack Trip Planner application using React for the frontend and Node.js (Express) for the backend, with Firebase Authentication and Firestore for persistence.
+
+Requirements:
+1. **Authentication**  
+   - Implement Login and Signup pages (email + password) using Firebase Auth.  
+   - Protect all other routes behind authentication.
+
+2. **Dashboard**  
+   - After login, redirect users to a Dashboard page.  
+   - On the Dashboard, users can create, view, edit, and delete “Trip Equipment Lists.”  
+   - Each list has a title (e.g. “Camping Trip”) and multiple items (e.g. “Backpack,” “Water Bottle,” “Compass”).  
+   - Items must be displayed with checkboxes so users can tick them off as they pack.
+
+3. **Data Storage**  
+   - Use Firestore with two top‑level collections:  
+     • `users` — each document keyed by `uid`, storing user profile info (email, displayName, createdAt).  
+     • `equipmentLists` — each document storing `{ userId, listTitle, createdAt, items: [{ name, checked }] }`.  
+   - Ensure proper security rules: users can only read/write their own documents.
+
+4. **Tech Stack & Structure**  
+   - **Frontend**: React with functional components, React Router v6, hooks, and component‑level styling (Tailwind or CSS modules).  
+   - **Backend**: Node.js + vite, with endpoints for any server‑side logic (if needed), or proxying to Firebase via the Admin SDK.  
+   - **Deployment-ready**: include scripts for running locally and production, environment‑variable handling, and instructions in `README.md`.
+
+5. **Extras (bonus)**  
+   - Real‑time updates: reflect Firestore changes live in the UI.  
+   - Error handling: show friendly toasts on failures.  
+   - Responsive design: mobile‑first layout.
+
+Please output a complete project scaffold:
+- `README.md` with setup & deployment instructions.
+- `package.json` files for both frontend and backend.
+- `src/` directories with React components, routes, services, and Node.js server code.
+- Firebase security rules for Auth and Firestore.
+
+Be sure to comment the code where non‑trivial logic appears and follow best practices for file organization and naming.  
